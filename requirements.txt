@@ -1,5 +1,4 @@
-selenium~=4.31.0
-pytest~=8.3.5
-PyMySQL~=1.1.1
-allure-python-commons~=2.14.1
+selenium~=4.11.2
+pytest~=7.4.2
+PyMySQL~=1.1.0
 allure-pytest~=2.13.2
