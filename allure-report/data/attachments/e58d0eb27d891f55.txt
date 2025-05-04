@@ -1,3 +1,0 @@
-[32mINFO    [0m TestLogin:test_login_page.py:56 Navigating to login page
-[32mINFO    [0m TestLogin:test_login_page.py:60 Entering empty username
-[33mWARNING [0m TestLogin:test_login_page.py:71 Login failed as expected with empty username

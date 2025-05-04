@@ -1,3 +1,0 @@
-2025-05-04 14:16:18,800 - TestLogin - INFO - Navigating to login page
-2025-05-04 14:16:19,755 - TestLogin - INFO - Entering empty password
-2025-05-04 14:16:25,634 - TestLogin - WARNING - Login failed as expected with empty password

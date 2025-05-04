@@ -1,3 +1,0 @@
-[32mINFO    [0m TestLogin:test_login_page.py:96 Navigating to login page
-[32mINFO    [0m TestLogin:test_login_page.py:100 Entering only password
-[33mWARNING [0m TestLogin:test_login_page.py:111 Login failed as expected with password but no username

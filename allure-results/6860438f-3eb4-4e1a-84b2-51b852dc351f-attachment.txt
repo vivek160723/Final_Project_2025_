@@ -1,3 +1,0 @@
-2025-05-04 14:16:12,163 - TestLogin - INFO - Navigating to login page
-2025-05-04 14:16:17,019 - TestLogin - INFO - Entering empty username
-2025-05-04 14:16:18,240 - TestLogin - WARNING - Login failed as expected with empty username
