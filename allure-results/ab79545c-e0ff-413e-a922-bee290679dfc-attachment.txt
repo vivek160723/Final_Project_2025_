@@ -1,0 +1,3 @@
+2025-05-04 14:16:26,227 - TestLogin - INFO - Navigating to login page
+2025-05-04 14:16:29,012 - TestLogin - INFO - Entering only password
+2025-05-04 14:16:29,692 - TestLogin - WARNING - Login failed as expected with password but no username

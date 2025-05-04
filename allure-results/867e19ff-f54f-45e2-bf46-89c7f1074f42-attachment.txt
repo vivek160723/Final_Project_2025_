@@ -1,0 +1,3 @@
+[32mINFO    [0m TestLogin:test_login_page.py:35 Navigating to login page
+[32mINFO    [0m TestLogin:test_login_page.py:39 Entering invalid credentials
+[33mWARNING [0m TestLogin:test_login_page.py:51 Login failed as expected with wrong credentials

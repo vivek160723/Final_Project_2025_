@@ -1,0 +1,15 @@
+2025-05-04 12:18:59,664 - TestLogin - INFO - Navigating to login page
+2025-05-04 12:19:02,946 - TestLogin - INFO - Entering valid credentials
+2025-05-04 12:19:05,413 - TestLogin - INFO - Login Successful
+2025-05-04 12:19:05,994 - TestLogin - INFO - Navigating to login page
+2025-05-04 12:19:07,129 - TestLogin - INFO - Entering invalid credentials
+2025-05-04 12:19:11,264 - TestLogin - WARNING - Login failed as expected with wrong credentials
+2025-05-04 12:19:11,912 - TestLogin - INFO - Navigating to login page
+2025-05-04 12:19:15,143 - TestLogin - INFO - Entering empty username
+2025-05-04 12:19:15,827 - TestLogin - WARNING - Login failed as expected with empty username
+2025-05-04 12:19:16,349 - TestLogin - INFO - Navigating to login page
+2025-05-04 12:19:19,343 - TestLogin - INFO - Entering empty password
+2025-05-04 12:19:20,563 - TestLogin - WARNING - Login failed as expected with empty password
+2025-05-04 12:19:21,158 - TestLogin - INFO - Navigating to login page
+2025-05-04 12:19:24,188 - TestLogin - INFO - Entering only password
+2025-05-04 12:19:24,882 - TestLogin - WARNING - Login failed as expected with password but no username
