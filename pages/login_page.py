@@ -30,3 +30,17 @@ class LoginPage:
         return WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(self.error_message)
         ).text
+
+    def login(self, username="Admin", password="admin123"):
+        self.enter_username(username)
+        self.enter_password(password)
+        self.click_login_btn()
+
+
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Search']"))
+            )
+        except:
+            self.driver.save_screenshot("login_failed.png")
+            raise Exception("Login failed or dashboard not loaded.")

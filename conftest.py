@@ -15,8 +15,9 @@ def driver():
     yield driver
     driver.quit()
 
+
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-def pytest_runtest_makereport(item, call):
+def pytest_runtest_makereport(item,):
     outcome = yield
     rep = outcome.get_result()
 
@@ -32,14 +33,13 @@ def pytest_runtest_makereport(item, call):
             # Save screenshot
             driver.save_screenshot(file_path)
 
-            # ✅ Attach to HTML report (existing)
+
             if item.config.pluginmanager.hasplugin("html"):
                 extra = getattr(rep, 'extra', [])
                 from pytest_html import extras
                 extra.append(extras.image(file_path))
                 rep.extra = extra
 
-            # ✅ Attach to Allure report
             try:
                 with open(file_path, "rb") as f:
                     allure.attach(

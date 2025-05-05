@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from config import config
-from pages.Login_Page import LoginPage
+from pages.login_page import LoginPage
 from utils.logger import setup_logger
 
 logger = setup_logger('TestLogin')
