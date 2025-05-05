@@ -1,6 +1,0 @@
-2025-05-02 18:07:36,312 - TestLogin - INFO - Navigating to login page
-2025-05-02 18:07:41,817 - TestLogin - INFO - Entering valid credentials
-2025-05-02 18:07:46,064 - TestLogin - INFO - Login Successful
-2025-05-02 18:07:47,165 - TestLogin - INFO - Navigating to login page
-2025-05-02 18:07:54,723 - TestLogin - INFO - Entering invalid credentials
-2025-05-02 18:07:58,490 - TestLogin - WARNING - Login failed as expected with wrong credentials

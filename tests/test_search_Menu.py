@@ -1,5 +1,3 @@
-import time
-
 import pytest
 import allure
 from selenium.common import TimeoutException, NoSuchElementException
@@ -51,7 +49,7 @@ class TestSearchFunctionality:
         logger.info("Performing empty search")
         dashboard.search("")
 
-        # Wait for sidebar result list to load
+
         sidebar_ul_xpath = "//*[@id='app']/div[1]/div[1]/aside/nav/div[2]/ul"
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, sidebar_ul_xpath))
@@ -60,8 +58,6 @@ class TestSearchFunctionality:
         menu_items = driver.find_elements(By.XPATH, f"{sidebar_ul_xpath}/li")
         assert len(menu_items) > 0, "Expected default menu items on empty search, but found none"
         logger.info("✅ Empty search retained default menu items")
-
-
 
 
 
@@ -86,10 +82,6 @@ class TestSearchFunctionality:
         except TimeoutException:
             logger.info("✅ Sidebar menu not present — interpreted as no results for special characters")
 
-    from selenium.common.exceptions import TimeoutException, NoSuchElementException
-
-    from selenium.common.exceptions import NoSuchElementException
-    import time
 
     @allure.severity(allure.severity_level.NORMAL)
     def test_invalid_search(self, driver):
