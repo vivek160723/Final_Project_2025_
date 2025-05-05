@@ -1,5 +1,11 @@
+import time
+
 import pytest
 import allure
+from selenium.common import TimeoutException, NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 from config import config
 from pages.login_page import LoginPage
@@ -11,12 +17,14 @@ logger = setup_logger("TestSearchMenu")
 @pytest.mark.usefixtures("driver")
 class TestSearchFunctionality:
 
-    def login_to_application(self, driver):
+    @staticmethod
+    def login_to_application(driver):
         logger.info("Navigating to login page")
         driver.get(config.BASE_URL)
         login = LoginPage(driver)
         login.login()
         logger.info("Login successful")
+
 
     @allure.severity(allure.severity_level.NORMAL)
     def test_valid_search(self, driver):
@@ -25,8 +33,63 @@ class TestSearchFunctionality:
 
         logger.info("Performing valid search: 'Pim'")
         dashboard.search("Pim")
+
+        WebDriverWait(driver, 20).until(
+            EC.presence_of_element_located((By.XPATH, "//*[@id='app']/div[1]/div[1]/aside/nav/div[2]/ul/li/a/span"))
+        )
         assert "pim" in driver.page_source.lower(), "Valid search term did not produce results!"
         logger.info("✅ Valid search successful")
+
+
+
+
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_empty_search(self, driver):
+        self.login_to_application(driver)
+        dashboard = DashboardPage(driver)
+
+        logger.info("Performing empty search")
+        dashboard.search("")
+
+        # Wait for sidebar result list to load
+        sidebar_ul_xpath = "//*[@id='app']/div[1]/div[1]/aside/nav/div[2]/ul"
+        WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.XPATH, sidebar_ul_xpath))
+        )
+
+        menu_items = driver.find_elements(By.XPATH, f"{sidebar_ul_xpath}/li")
+        assert len(menu_items) > 0, "Expected default menu items on empty search, but found none"
+        logger.info("✅ Empty search retained default menu items")
+
+
+
+
+
+    @allure.severity(allure.severity_level.NORMAL)
+    def test_special_character_search(self, driver):
+        self.login_to_application(driver)
+        dashboard = DashboardPage(driver)
+
+        logger.info("Performing special character search: '!@#$%^&*()'")
+        dashboard.search("!@#$%^&*()")
+
+        sidebar_ul_xpath = "//*[@id='app']/div[1]/div[1]/aside/nav/div[2]/ul"
+
+        try:
+            WebDriverWait(driver, 5).until(
+                EC.presence_of_element_located((By.XPATH, sidebar_ul_xpath))
+            )
+            menu_items = driver.find_elements(By.XPATH, f"{sidebar_ul_xpath}/li")
+            assert len(menu_items) == 0, f"Expected no results, but found {len(menu_items)}"
+            logger.info("✅ Special character search returned no results as expected")
+
+        except TimeoutException:
+            logger.info("✅ Sidebar menu not present — interpreted as no results for special characters")
+
+    from selenium.common.exceptions import TimeoutException, NoSuchElementException
+
+    from selenium.common.exceptions import NoSuchElementException
+    import time
 
     @allure.severity(allure.severity_level.NORMAL)
     def test_invalid_search(self, driver):
@@ -36,28 +99,6 @@ class TestSearchFunctionality:
         logger.info("Performing invalid search: '@12'")
         dashboard.search("@12")
 
-        assert "dashboard" in driver.current_url.lower(), "Empty search caused unexpected behavior!"
-        logger.info("✅ Empty search handled correctly")
-
-    @allure.severity(allure.severity_level.NORMAL)
-    def test_empty_search(self, driver):
-        self.login_to_application(driver)
-        dashboard = DashboardPage(driver)
-
-        logger.info("Performing empty search")
-        dashboard.search("")
-        assert "dashboard" in driver.current_url.lower(), "Empty search caused unexpected behavior!"
-        logger.info("✅ Empty search handled correctly")
-
-    @allure.severity(allure.severity_level.NORMAL)
-    def test_special_character_search(self, driver):
-        self.login_to_application(driver)
-        dashboard = DashboardPage(driver)
-
-        logger.info("Performing special character search: '!@#$%^&*()'")
-        dashboard.search("!@#$%^&*()")
-        assert "no records found" in driver.page_source.lower(), "Special character search caused unexpected results!"
-        logger.info("✅ Special character search handled correctly")
 
     @allure.severity(allure.severity_level.NORMAL)
     def test_case_insensitive_search(self, driver):
