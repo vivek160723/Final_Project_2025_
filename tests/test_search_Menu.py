@@ -1,6 +1,6 @@
 import pytest
 import allure
-from selenium.common import TimeoutException, NoSuchElementException
+from selenium.common import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By

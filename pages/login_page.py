@@ -35,8 +35,6 @@ class LoginPage:
         self.enter_username(username)
         self.enter_password(password)
         self.click_login_btn()
-
-
         try:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Search']"))
