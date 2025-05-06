@@ -1,7 +1,5 @@
 import time
 
-
-
 from config import CONFIG
 from pages.add_emp_page import AddEmployeePage
 from pages.dashboard_page import DashboardPage

@@ -8,3 +8,4 @@ pip install -r requirements.txt
 
 echo "🧪 Running tests with Pytest..."
 pytest --alluredir=allure-results
+
