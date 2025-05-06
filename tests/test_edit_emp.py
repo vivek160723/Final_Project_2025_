@@ -4,6 +4,7 @@ from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 from pages.edit_employee import EditEmployeePage
 
+
 @pytest.mark.usefixtures("driver_setup")
 @pytest.mark.regression
 @pytest.mark.smoke

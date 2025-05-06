@@ -4,7 +4,6 @@ from selenium.webdriver.chrome.options import Options
 import os
 import allure
 
-from config import CONFIG
 
 
 #------------------------------------------------------------------------------------------------------------------------
@@ -19,13 +18,9 @@ def driver():
     yield driver
     driver.quit()
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def driver_setup(request, driver):
     request.cls.driver = driver
-#------------------------------------------------------------------------------------------------------------------------
-
-
-#------------------------------------------------------------------------------------------------------------------------
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item):
