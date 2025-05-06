@@ -44,10 +44,10 @@ def test_invalid_login(driver):
 
     WebDriverWait(driver, 20).until(
         EC.visibility_of_element_located(
-            (By.XPATH, "//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/span"))
+            (By.XPATH, "//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p"))
     )
-    error_text = driver.find_element(By.XPATH,"//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/form/div[1]/div/span").text
-    assert "Required" in error_text
+    error_text = driver.find_element(By.XPATH,"//*[@id='app']/div[1]/div/div[1]/div/div[2]/div[2]/div/div[1]/div[1]/p").text
+    assert "Invalid credentials" in error_text
     logger.warning("Login failed as expected with wrong credentials")
 
 @pytest.mark.negative
