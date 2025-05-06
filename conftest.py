@@ -4,6 +4,10 @@ from selenium.webdriver.chrome.options import Options
 import os
 import allure
 
+from config import CONFIG
+
+
+#------------------------------------------------------------------------------------------------------------------------
 @pytest.fixture()
 def driver():
     chrome_options = Options()
@@ -15,6 +19,22 @@ def driver():
     yield driver
     driver.quit()
 
+
+#------------------------------------------------------------------------------------------------------------------------
+@pytest.fixture(scope="class")
+def class_driver(request):
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920x1080")
+
+    driver = webdriver.Chrome(options=chrome_options)
+    driver.get(CONFIG["base_url"])
+    request.cls.driver = driver
+    yield
+    driver.quit()
+
+#------------------------------------------------------------------------------------------------------------------------
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item):

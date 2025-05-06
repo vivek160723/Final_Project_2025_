@@ -1,6 +1,8 @@
 import time
 
-import config.config
+
+
+from config import CONFIG
 from pages.add_emp_page import AddEmployeePage
 from pages.dashboard_page import DashboardPage
 from pages.login_page import LoginPage
@@ -13,7 +15,7 @@ def test_add_employee(driver):
     pim = PIMPage(driver)
     add_emp = AddEmployeePage(driver)
 
-    driver.get(config.config.BASE_URL)
+    driver.get(CONFIG["base_url"])
     login.login("Admin", "admin123")
 
     dashboard.search("PIM")

@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-from config import config
+from config import CONFIG
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 from utils.logger import setup_logger
@@ -18,7 +18,7 @@ class TestSearchFunctionality:
     @staticmethod
     def login_to_application(driver):
         logger.info("Navigating to login page")
-        driver.get(config.BASE_URL)
+        driver.get(CONFIG["base_url"])
         login = LoginPage(driver)
         login.login()
         logger.info("Login successful")

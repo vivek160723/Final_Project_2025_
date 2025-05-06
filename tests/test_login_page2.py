@@ -2,7 +2,7 @@ import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from config import config
+from config import CONFIG
 from pages.login_page import LoginPage
 from utils.db_utils import get_test_data_from_db
 from utils.logger import setup_logger
@@ -16,7 +16,7 @@ logger = setup_logger('TestLogin')
 @pytest.mark.regression
 def test_login_ddt(driver, username, password):
     logger.info(f"Testing login with: username='{username}' password='{password}'")
-    driver.get(config.BASE_URL)
+    driver.get(CONFIG["base_url"])
 
     login_page = LoginPage(driver)
     login_page.enter_username("" if username == "(empty)" else username)

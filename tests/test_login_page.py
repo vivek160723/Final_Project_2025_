@@ -2,7 +2,7 @@ import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from config import config
+from config import CONFIG
 from pages.login_page import LoginPage
 from utils.logger import setup_logger
 
@@ -13,7 +13,7 @@ logger = setup_logger('TestLogin')
 @pytest.mark.regression
 def test_valid_login(driver):
     logger.info("Navigating to login page")
-    driver.get(config.BASE_URL)
+    driver.get(CONFIG["base_url"])
 
     login_page = LoginPage(driver)
     logger.info("Entering valid credentials")
@@ -33,7 +33,7 @@ def test_valid_login(driver):
 @pytest.mark.regression
 def test_invalid_login(driver):
     logger.info("Navigating to login page")
-    driver.get(config.BASE_URL)
+    driver.get(CONFIG["base_url"])
 
     login_page = LoginPage(driver)
     logger.info("Entering invalid credentials")
@@ -54,7 +54,7 @@ def test_invalid_login(driver):
 @pytest.mark.regression
 def test_empty_username(driver):
     logger.info("Navigating to login page")
-    driver.get(config.BASE_URL)
+    driver.get(CONFIG["base_url"])
 
     login_page = LoginPage(driver)
     logger.info("Entering empty username")
@@ -74,7 +74,7 @@ def test_empty_username(driver):
 @pytest.mark.regression
 def test_empty_password(driver):
     logger.info("Navigating to login page")
-    driver.get(config.BASE_URL)
+    driver.get(CONFIG["base_url"])
 
     login_page = LoginPage(driver)
     logger.info("Entering empty password")
@@ -94,7 +94,7 @@ def test_empty_password(driver):
 @pytest.mark.regression
 def test_password_only(driver):
     logger.info("Navigating to login page")
-    driver.get(config.BASE_URL)
+    driver.get(CONFIG["base_url"])
 
     login_page = LoginPage(driver)
     logger.info("Entering only password")
