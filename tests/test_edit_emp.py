@@ -1,11 +1,10 @@
 import time
-
 import pytest
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 from pages.edit_employee import EditEmployeePage
 
-@pytest.mark.usefixtures("class_driver")
+@pytest.mark.usefixtures("driver_setup")
 @pytest.mark.regression
 @pytest.mark.smoke
 class TestEditEmployee:
