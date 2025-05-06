@@ -3,5 +3,8 @@
 echo "🔧 Activating virtual environment..."
 source venv/bin/activate
 
+echo "📦 Installing dependencies..."
+pip install -r requirements.txt
+
 echo "🧪 Running tests with Pytest..."
-pytest --maxfail=1 --capture=tee-sys --tb=short
+pytest --alluredir=allure-results
