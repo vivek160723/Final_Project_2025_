@@ -1,7 +1,4 @@
 import pytest
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-
 from config import CONFIG
 from pages.login_page import LoginPage
 from pages.buzz_page import BuzzPage

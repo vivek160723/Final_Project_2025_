@@ -18,24 +18,24 @@ class TestRecruitment:
         login = LoginPage(self.driver)
         recruit = Recruit(self.driver)
 
-        logger.info("🔐 Logging in as Admin")
+        logger.info(" Logging in as Admin")
         login.login("Admin", "admin123")  # ✅ Reusing existing LoginPage POM
 
-        logger.info("✅ Login successful. Waiting for Recruitment tab to be visible.")
+        logger.info(" Login successful. Waiting for Recruitment tab to be visible.")
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(recruit.recruitementbutton)
         )
 
-        logger.info("📁 Navigating to Recruitment module")
+        logger.info(" Navigating to Recruitment module")
         recruit.click_recruitment()
 
-        logger.info("🧾 Waiting for Add button")
+        logger.info(" Waiting for Add button")
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(recruit.addbutton)
         )
         recruit.click_add_button()
 
-        logger.info("✍️ Filling candidate details")
+        logger.info("✍ Filling candidate details")
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(recruit.firstname)
         )
@@ -43,18 +43,18 @@ class TestRecruitment:
         recruit.enter_last_name("Doe")
         recruit.enter_email("john.doe@example.com")
 
-        logger.info("📌 Selecting Job Vacancy")
+        logger.info(" Selecting Job Vacancy")
         recruit.select_job_vacancy()
 
-        logger.info("💾 Saving recruitment entry")
+        logger.info("Saving recruitment entry")
         recruit.click_save_button()
 
-        logger.info("🔍 Verifying success message")
+        logger.info(" Verifying success message")
         success_message = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(recruit.successmessage)
         ).text
 
-        logger.info(f"✅ Success message: {success_message}")
+        logger.info(f" Success message: {success_message}")
         assert "Successfully Saved" in success_message, f"Expected success message not found: {success_message}"
 
-        logger.info("🎉 Test 'Add Recruitment Entry' completed successfully.")
+        logger.info(" Test 'Add Recruitment Entry' completed successfully.")

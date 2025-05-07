@@ -1,7 +1,5 @@
 import time
 
-import pytest
-
 from config import CONFIG
 from pages.login_page import LoginPage
 from pages.pim_page import PIMPage

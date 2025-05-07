@@ -22,7 +22,7 @@ class TestEditEmployee:
 
         login.login("Admin", "admin123")
         dashboard.click_pim_from_search()
-        edit_emp.search_employee("manda")
+        edit_emp.search_employee("Md")
         edit_emp.click_search()
         time.sleep(3)
         edit_emp.click_edit()
